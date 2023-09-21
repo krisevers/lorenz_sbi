@@ -24,7 +24,7 @@ def worker(params):
 
     mean, cov, cor, eigvals, eigvecs, lyap = statistics(x_t)
 
-    X = np.concatenate([mean, cov.flatten(), cor.flatten(), eigvals, lyap, params])
+    X = np.concatenate([mean, cov.flatten(), cor.flatten(), params])
 
     return X
 
@@ -45,7 +45,7 @@ if __name__=="__main__":
     theta = np.empty((num_simulations, 3))
     theta[:, 0] = np.random.uniform(0.0, 20.0, size=num_simulations)
     theta[:, 1] = np.random.uniform(0.0, 10.0, size=num_simulations)
-    theta[:, 2] = np.random.uniform(0.0, 50.0, size=num_simulations)
+    theta[:, 2] = np.random.uniform(0.0, 30.0, size=num_simulations)
 
     # Split the simulations across the workers.
     theta = np.array_split(theta, size)[rank]

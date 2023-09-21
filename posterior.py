@@ -1,6 +1,8 @@
 import torch
 import sbi.utils as utils
-from sbi.analysis import pairplot, conditional_pairplot
+from sbi.analysis import conditional_pairplot
+
+from utils import pairplot, marginal_correlation
 
 if __name__=="__main__":
 
@@ -26,7 +28,7 @@ if __name__=="__main__":
 
     mean, cov, cor, eigvals, eigvecs, lyap = statistics(x_t)
 
-    obs_x = np.concatenate([mean, cov.flatten(), cor.flatten(), eigvals, lyap])
+    obs_x = np.concatenate([mean, cov.flatten(), cor.flatten()])
     obs_theta = [sigma, beta, rho]
 
     # Load posterior.
@@ -38,5 +40,13 @@ if __name__=="__main__":
     posterior_samples = posterior.sample((num_samples,))
 
     fig, ax = pairplot(samples=posterior_samples, labels=[r"$\sigma$", r"$\beta$", r"$\rho$"], figsize=(10, 10))
+
     plt.savefig("png/pairplot.png")
 
+    fig, ax = marginal_correlation(samples=posterior_samples, labels=[r"$\sigma$", r"$\beta$", r"$\rho$"], figsize=(10, 10))
+
+    plt.savefig("png/marginal_correlation.png")
+
+
+
+    import IPython; IPython.embed();
