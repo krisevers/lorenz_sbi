@@ -9,13 +9,16 @@ The figure shows an example inferred posterior. The real parameters are: $\sigma
 
 ## Installation on Linux
 Create virtual environment
-
 ```
-python venv -m env
+python venv -m env_name
+```
+
+Activate environment
+```
+source env_name/bin/activate
 ```
 
 Install requirements
-
 ```
 pip install -r requirements.txt
 ```
