@@ -37,6 +37,6 @@ if __name__=="__main__":
     posterior.set_default_x(obs_x)
     posterior_samples = posterior.sample((num_samples,))
 
-    fig, ax = pairplot(samples=posterior_samples, labels=["sigma", "beta", "rho"], figsize=(10, 10))
+    fig, ax = pairplot(samples=posterior_samples, labels=[r"$\sigma$", r"$\beta$", r"$\rho$"], figsize=(10, 10))
     plt.savefig("png/pairplot.png")
 
