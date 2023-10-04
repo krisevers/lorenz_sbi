@@ -1,6 +1,5 @@
 import torch
 import sbi.utils as utils
-from sbi.analysis import conditional_pairplot
 
 from utils import pairplot, marginal_correlation
 
@@ -34,7 +33,7 @@ if __name__=="__main__":
     # Load posterior.
     posterior = torch.load("models/posterior.pt")
 
-    num_samples = 100000
+    num_samples = 10000
 
     posterior.set_default_x(obs_x)
     posterior_samples = posterior.sample((num_samples,))
